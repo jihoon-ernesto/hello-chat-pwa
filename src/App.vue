@@ -1,14 +1,14 @@
 <template>
-  <div id="app">
-    <chat-messages
-      :messages="messages"
-      >
-    </chat-messages>
-    <chat-input
-      @send="sendInput"
-      >
-    </chat-input>
-  </div>
+<div id="app">
+  <chat-messages
+    :messages="messages"
+    >
+  </chat-messages>
+  <chat-input
+    @send="sendInput"
+    >
+  </chat-input>
+</div>
 </template>
 
 <script>
@@ -24,7 +24,10 @@ export default {
   },
   data() {
     return {
-      messages: [],
+      messages: [{
+        from: 'you',
+        content: 'Hi!',
+      }],
     };
   },
   methods: {
@@ -60,6 +63,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 
-  padding: 10%;
+  padding: 0 10%;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
 }
 </style>
