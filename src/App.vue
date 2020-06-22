@@ -1,10 +1,14 @@
 <template>
 <div id="app">
   <chat-messages
+    class="chat-messages"
     :messages="messages"
+    :doScroll="chatScroll"
+    @scrolled="scrolled"
     >
   </chat-messages>
   <chat-input
+    class="chat-input"
     @send="sendInput"
     >
   </chat-input>
@@ -50,6 +54,7 @@ export default {
         content: 'Hi!',
       }],
       showUpdateUI: false,
+      chatScroll: false,
     };
   },
   created() {
@@ -69,6 +74,7 @@ export default {
       const respList = await chatChannel.sendMessage(msg);
       if (respList) {
         this.handleResponse(respList);
+        this.chatScroll = true;
       }
     },
     handleResponse(respList) {
@@ -78,16 +84,20 @@ export default {
           content: resp.content,
         });
       }
+      this.chatScroll = true;
     },
     async update() {
       this.showUpdateUI = false;
       await this.$workbox.messageSW({ type: "SKIP_WAITING" });
     },
+    scrolled() {
+      this.chatScroll = false;
+    }
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -96,10 +106,27 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 
-  padding: 0 10%;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-content: flex-end;
+
+  .chat-messages {
+    position: fixed;
+    bottom: 50px;
+    left: 10px;
+    right: 10px;
+
+    height: 80%;
+    overflow-y: scroll;
+  }
+
+  .chat-input {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+  }
 }
 
 .update-dialog {

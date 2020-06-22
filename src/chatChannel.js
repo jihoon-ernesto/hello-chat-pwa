@@ -1,14 +1,9 @@
 import axios from 'axios';
-
-// TODO: treat target url and chatbot properly.
-const target = {
-  url: 'fake-url',
-  chatbot: 'fake-chatbot',
-};
+import config from '@/server.config.js';
 
 const _sendMsg = msg => {
-  return axios.post(target.url, {
-    chatbot: target.chatbot,
+  return axios.post(config.target.url, {
+    chatbot: config.target.chatbot,
     message: msg,
   })
   .then(resp => resp.status === 200 ? resp.data : null)

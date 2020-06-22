@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="chat-input">
   <input
     v-model="inputMsg"
     @keyup.enter="send"
@@ -24,8 +24,14 @@ export default {
 };
 </script>
 
-<style scoped>
-input {
-  width: 100%;
+<style lang="scss" scoped>
+.chat-input {
+  margin: 10px;
+
+  input {
+    width: 100%;
+    height: 25px;
+    border: 3px solid skyblue;
+  }
 }
 </style>
