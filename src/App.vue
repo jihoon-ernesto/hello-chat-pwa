@@ -106,9 +106,6 @@ export default {
   color: #2c3e50;
   margin-top: 30px;
 
-  width: 100%;
-  padding: 30px;
-
   .chat-messages {
     position: fixed;
     bottom: 50px;
