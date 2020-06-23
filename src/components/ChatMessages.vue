@@ -49,14 +49,35 @@ export default {
 
 <style lang="scss" scoped>
 .chat-messages {
-  background-color: lightyellow;
   margin: 10px;
+  padding: 10px;
 
-  .from-me {
-    text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  p {
+    margin: 4px 0;
+
+    &.from-me {
+      color: steelblue;
+      text-align: right;
+    }
+    &.from-you {
+      color: navy;
+      text-align: left;
+    }
   }
-  .from-you {
-    text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+  .chat-messages {
+    background-color: powderblue;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .chat-messages {
+    background-color: lightyellow;
   }
 }
 </style>

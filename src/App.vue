@@ -21,13 +21,13 @@
       <button
         class="update-dialog__button update-dialog__button--confirm"
         @click="update"
-      >
+        >
         Update
       </button>
       <button
         class="update-dialog__button update-dialog__button--cancel"
         @click="showUpdateUI = false"
-      >
+        >
         Cancel
       </button>
     </div>
@@ -51,7 +51,7 @@ export default {
     return {
       messages: [{
         from: 'you',
-        content: 'Hi!',
+        content: 'Welcome!',
       }],
       showUpdateUI: false,
       chatScroll: false,
@@ -104,21 +104,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 30px;
 
+  width: 100%;
   padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-content: flex-end;
 
   .chat-messages {
     position: fixed;
     bottom: 50px;
     left: 10px;
     right: 10px;
-
-    height: 80%;
-    overflow-y: scroll;
+    height: calc(100% - 100px);
+    overflow: auto;
   }
 
   .chat-input {

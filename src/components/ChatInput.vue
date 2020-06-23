@@ -29,9 +29,10 @@ export default {
   margin: 10px;
 
   input {
-    width: 100%;
+    width: calc(100% - 20px);
     height: 25px;
-    border: 3px solid skyblue;
+    border: 1px solid skyblue;
+    font-size: 16px;
   }
 }
 </style>
