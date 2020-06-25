@@ -1,6 +1,7 @@
 <template>
 <div class="chat-messages" ref="msgs"
   :class="classObj">
+  <img :src="imgUrl" />
   <p v-for="(msg, i) in messages"
     :key="i"
     :class="`from-${msg.from}`"
@@ -11,6 +12,8 @@
 </template>
 
 <script>
+import config from '@/server.config.js';
+
 export default {
   name: 'chat-messages',
   props: {
@@ -36,6 +39,9 @@ export default {
           'default-port': false,
           'another-port': true,
         };
+    },
+    imgUrl() {
+      return config.target.charImg;
     },
   },
   mounted() {
@@ -66,6 +72,13 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  img {
+    position: absolute;
+    align-self: flex-start;
+    top: 0;
+    width: 50%;
+  }
 
   p {
     margin: 4px 0;
