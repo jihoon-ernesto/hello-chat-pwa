@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import config from '@/server.config.js';
-
 export default {
   name: 'chat-messages',
   props: {
@@ -41,7 +39,7 @@ export default {
         };
     },
     imgUrl() {
-      return config.target.charImg;
+      return process.env.VUE_APP_CHAR_IMG;
     },
   },
   mounted() {

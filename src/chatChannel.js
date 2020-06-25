@@ -1,9 +1,8 @@
 import axios from 'axios';
-import config from '@/server.config.js';
 
 const _sendMsg = msg => {
-  return axios.post(config.target.url, {
-    chatbot: config.target.chatbot,
+  return axios.post(process.env.VUE_APP_CHAT_SERVER, {
+    chatbot: process.env.VUE_APP_CHATBOT_NAME,
     message: msg,
   })
   .then(resp => resp.status === 200 ? resp.data : null)
