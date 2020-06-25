@@ -1,5 +1,6 @@
 <template>
 <div id="app">
+  <p>{{ host }}</p>
   <chat-messages
     class="chat-messages"
     :messages="messages"
@@ -57,6 +58,11 @@ export default {
       chatScroll: false,
     };
   },
+  computed: {
+    host() {
+      return location.host;
+    },
+  },
   created() {
     if (this.$workbox) {
       this.$workbox.addEventListener("waiting", () => {
@@ -111,7 +117,7 @@ export default {
     bottom: 50px;
     left: 10px;
     right: 10px;
-    height: calc(100% - 100px);
+    height: calc(100% - 140px);
     overflow: auto;
   }
 

@@ -1,6 +1,6 @@
 <template>
 <div class="chat-messages" ref="msgs"
-  >
+  :class="classObj">
   <p v-for="(msg, i) in messages"
     :key="i"
     :class="`from-${msg.from}`"
@@ -26,6 +26,17 @@ export default {
   data() {
     return {
     };
+  },
+  computed: {
+    classObj() {
+      return location.port === '8080' ? {
+          'default-port': true,
+          'another-port': false,
+        } : {
+          'default-port': false,
+          'another-port': true,
+        };
+    },
   },
   mounted() {
     this.scrollToBottom();
@@ -71,12 +82,18 @@ export default {
 }
 
 @media only screen and (max-width: 600px) {
-  .chat-messages {
-    background-color: powderblue;
+  .default-port {
+    background-color: lightskyblue;
+  }
+  .another-port {
+    background-color: khaki;
   }
 }
 @media only screen and (min-width: 600px) {
-  .chat-messages {
+  .default-port {
+    background-color: powderblue;
+  }
+  .another-port {
     background-color: lightyellow;
   }
 }
