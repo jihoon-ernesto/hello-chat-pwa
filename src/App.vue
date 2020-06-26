@@ -1,6 +1,9 @@
 <template>
 <div id="app">
-  <p>{{ host }}</p>
+  <div class="env-info">
+    <p>{{ host }}</p>
+    <p>{{ browserInfo }}</p>
+  </div>
   <chat-messages
     class="chat-messages"
     :messages="messages"
@@ -38,6 +41,7 @@
 </template>
 
 <script>
+import { detect } from 'detect-browser';
 import ChatMessages from './components/ChatMessages.vue';
 import ChatInput from './components/ChatInput.vue';
 import chatChannel from './chatChannel.js';
@@ -61,6 +65,10 @@ export default {
   computed: {
     host() {
       return location.host;
+    },
+    browserInfo() {
+      const browser = detect();
+      return [browser.name, browser.version, browser.os].join(' : ');
     },
   },
   created() {
@@ -117,7 +125,7 @@ export default {
     bottom: 50px;
     left: 10px;
     right: 10px;
-    height: calc(100% - 140px);
+    height: calc(100% - 180px);
     overflow: auto;
   }
 
