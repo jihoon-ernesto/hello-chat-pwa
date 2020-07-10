@@ -1,34 +1,53 @@
 <template>
 <div class="container">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <div class="model-box">
-    <model-gltf
-      clsss="model-3d"
-      src="https://hujiulong.github.io/vue-3d-model/static/models/gltf/Duck/glTF/Duck.gltf">
-    </model-gltf>
-  </div>
-
-  <div class="model-box">
-    <model-fbx
-      clsss="model-3d"
-      src="https://hujiulong.github.io/vue-3d-model/static/models/fbx/dancing.fbx">
-    </model-fbx>
+    <model-viewer
+      ref="model"
+      class="model"
+      :src="avatarUrl"
+      ios-src=""
+      alt="3D model"
+      interaction-prompt="false"
+      camera-controls autoplay ar shadow-intensity="1"
+      :animation-name="animation"
+      >
+    </model-viewer>
   </div>
 
 </div>
 </template>
 
 <script>
-import {
-  ModelGltf,
-  ModelFbx,
-} from 'vue-3d-model';
+// import ModelViewer from '@google/model-viewer';
 
 export default {
   name: 'avatar',
   components: {
-    ModelGltf,
-    ModelFbx,
+    // ModelViewer,
+  },
+  props: {
+    wave: {
+      type: Boolean,
+      default: false,
+    },
+    run: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      avatarUrl: process.env.VUE_APP_AVATAR,
+    };
+  },
+  computed: {
+    animation() {
+      return this.wave ? 'Wave' :
+        this.run ? 'Running' :
+        'Idle';
+    },
   },
 }
 </script>
@@ -37,12 +56,14 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   width: 100%;
 
   .model-box {
-    width: 100%;
-    height: 200px;
+    .model {
+      width: 200px;
+      height: 300px;
+    }
   }
 }
 </style>

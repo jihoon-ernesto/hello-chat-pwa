@@ -1,9 +1,6 @@
 <template>
 <div class="chat-messages" ref="msgs"
   :class="classObj">
-  <img :src="imgUrl"
-    @click="onTouchImage"
-    />
   <p v-for="(msg, i) in messages"
     :key="i"
     :class="`from-${msg.from}`"
@@ -28,7 +25,6 @@ export default {
   },
   data() {
     return {
-      imageTouched: false,
     };
   },
   computed: {
@@ -40,11 +36,6 @@ export default {
           'default-port': false,
           'another-port': true,
         };
-    },
-    imgUrl() {
-      return this.imageTouched
-        ? process.env.VUE_APP_CHAR_IMG_TOUCHED
-        : process.env.VUE_APP_CHAR_IMG;
     },
   },
   mounted() {
@@ -63,12 +54,6 @@ export default {
       msgs.scrollTop = msgs.scrollHeight;
       this.$emit('scrolled');
     },
-    onTouchImage() {
-      this.imageTouched = true;
-      window.setTimeout(() => {
-        this.imageTouched = false;
-      }, 1000);
-    },
   },
 };
 </script>
@@ -81,13 +66,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
-  img {
-    position: absolute;
-    align-self: flex-start;
-    top: 0;
-    width: 50%;
-  }
 
   p {
     margin: 4px 0;

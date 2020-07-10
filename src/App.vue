@@ -5,7 +5,10 @@
     <p>{{ browserInfo }}</p>
   </div>
 
-  <avatar class="avatar">
+  <avatar class="avatar"
+    :wave="animation.wave"
+    :run="animation.run"
+    >
   </avatar>
 
   <chat-messages
@@ -66,6 +69,10 @@ export default {
       }],
       showUpdateUI: false,
       chatScroll: false,
+      animation: {
+        wave: false,
+        run: false,
+      },
     };
   },
   computed: {
@@ -105,6 +112,7 @@ export default {
         });
       }
       this.chatScroll = true;
+      this.doAnything();
     },
     async update() {
       this.showUpdateUI = false;
@@ -112,7 +120,26 @@ export default {
     },
     scrolled() {
       this.chatScroll = false;
-    }
+    },
+    doWave() {
+      this.animation.wave = true;
+      setTimeout(() => {
+        this.animation.wave = false;
+      }, 2000);
+    },
+    doRun() {
+      this.animation.run = true;
+      setTimeout(() => {
+        this.animation.run = false;
+      }, 2000);
+    },
+    doAnything() {
+      if (Math.random() > 0.5) {
+        this.doWave();
+      } else {
+        this.doRun();
+      }
+    },
   },
 };
 </script>
