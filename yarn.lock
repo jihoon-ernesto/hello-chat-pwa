@@ -8076,6 +8076,11 @@ thread-loader@^2.1.3:
     loader-utils "^1.1.0"
     neo-async "^2.6.0"
 
+three@^0.118.3:
+  version "0.118.3"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.118.3.tgz#c0bf8c10a68155478f12f4ccac2ff979526a4a0a"
+  integrity sha512-ijECXrNzDkHieoeh2H69kgawTGH8DiamhR4uBN8jEM7VHSKvfTdEvOoHsA8Aq7dh7PHAxhlqBsN5arBI3KixSw==
+
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -8480,6 +8485,13 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+
+vue-3d-model@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/vue-3d-model/-/vue-3d-model-1.3.1.tgz#6b79f95a16137043d2a748f7aa6c55bd6b06b301"
+  integrity sha512-md+ZgtcSa0NcwhEWYG/uWgmtQjkAaUb+9jaHmZYdsnaPEBlT9IW3ptVQJRiA7VOGvobXaHy72ASCFaQJf08/rA==
+  dependencies:
+    three "^0.118.3"
 
 vue-eslint-parser@^7.0.0:
   version "7.1.0"
