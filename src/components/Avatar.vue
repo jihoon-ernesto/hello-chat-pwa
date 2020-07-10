@@ -10,7 +10,7 @@
       ios-src=""
       alt="3D model"
       interaction-prompt="false"
-      camera-controls autoplay ar shadow-intensity="1"
+      camera-controls autoplay shadow-intensity="1"
       :animation-name="animation"
       >
     </model-viewer>
