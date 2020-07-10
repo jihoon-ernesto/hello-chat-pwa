@@ -4,6 +4,10 @@
     <p>{{ host }}</p>
     <p>{{ browserInfo }}</p>
   </div>
+
+  <avatar class="avatar">
+  </avatar>
+
   <chat-messages
     class="chat-messages"
     :messages="messages"
@@ -42,6 +46,7 @@
 
 <script>
 import { detect } from 'detect-browser';
+import Avatar from './components/Avatar.vue';
 import ChatMessages from './components/ChatMessages.vue';
 import ChatInput from './components/ChatInput.vue';
 import chatChannel from './chatChannel.js';
@@ -49,6 +54,7 @@ import chatChannel from './chatChannel.js';
 export default {
   name: 'App',
   components: {
+    Avatar,
     ChatMessages,
     ChatInput,
   },
@@ -120,11 +126,19 @@ export default {
   color: #2c3e50;
   margin-top: 30px;
 
+  .avatar {
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+    width: 45vw;
+    height: calc(100% - 180px);
+  }
+
   .chat-messages {
     position: fixed;
     bottom: 50px;
-    left: 10px;
-    right: 10px;
+    left: 0;
+    width: 45vw;
     height: calc(100% - 180px);
     overflow: auto;
   }
