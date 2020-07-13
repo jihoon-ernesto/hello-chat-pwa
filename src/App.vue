@@ -3,6 +3,7 @@
   <div class="env-info">
     <p>{{ host }}</p>
     <p>{{ browserInfo }}</p>
+    <p>{{ buildInfo }}</p>
   </div>
 
   <avatar class="avatar"
@@ -81,7 +82,10 @@ export default {
     },
     browserInfo() {
       const browser = detect();
-      return [browser.name, browser.version, browser.os].join(' : ');
+      return [browser.name, browser.version, browser.os].join(' / ');
+    },
+    buildInfo() {
+      return 'git hash: ' + process.env.VUE_APP_GIT_HASH;
     },
   },
   created() {
@@ -152,6 +156,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 30px;
+
+  .env-info {
+    font-size: 12px;
+
+    p {
+      margin: 2px;
+    }
+  }
 
   .avatar {
     position: fixed;
