@@ -28,25 +28,29 @@ export default {
     // ModelViewer,
   },
   props: {
-    wave: {
-      type: Boolean,
-      default: false,
-    },
-    run: {
-      type: Boolean,
-      default: false,
-    },
   },
   data() {
     return {
       avatarUrl: process.env.VUE_APP_AVATAR,
+      animation: 'Idle',
     };
   },
   computed: {
-    animation() {
-      return this.wave ? 'Wave' :
-        this.run ? 'Running' :
-        'Idle';
+  },
+  methods: {
+    setAnimation(animName) {
+      this.$nextTick(() => {
+        this.animation = animName;
+        setTimeout(() => {
+          this.animation = 'Idle';
+        }, 2000);
+      })
+    },
+    wave() {
+      this.setAnimation('Wave');
+    },
+    run() {
+      this.setAnimation('Running');
     },
   },
 }

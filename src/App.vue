@@ -7,8 +7,7 @@
   </div>
 
   <avatar class="avatar"
-    :wave="animation.wave"
-    :run="animation.run"
+    ref="avatar"
     >
   </avatar>
 
@@ -70,10 +69,6 @@ export default {
       }],
       showUpdateUI: false,
       chatScroll: false,
-      animation: {
-        wave: false,
-        run: false,
-      },
     };
   },
   computed: {
@@ -116,7 +111,7 @@ export default {
         });
       }
       this.chatScroll = true;
-      this.doAnything();
+      this.doAnimation();
     },
     async update() {
       this.showUpdateUI = false;
@@ -125,23 +120,11 @@ export default {
     scrolled() {
       this.chatScroll = false;
     },
-    doWave() {
-      this.animation.wave = true;
-      setTimeout(() => {
-        this.animation.wave = false;
-      }, 2000);
-    },
-    doRun() {
-      this.animation.run = true;
-      setTimeout(() => {
-        this.animation.run = false;
-      }, 2000);
-    },
-    doAnything() {
+    doAnimation() {
       if (Math.random() > 0.5) {
-        this.doWave();
+        this.$refs.avatar.wave();
       } else {
-        this.doRun();
+        this.$refs.avatar.run();
       }
     },
   },
@@ -168,15 +151,15 @@ export default {
   .avatar {
     position: fixed;
     bottom: 50px;
-    right: 0;
-    width: 45vw;
+    left: 0;
+    width: 40vw;
     height: calc(100% - 180px);
   }
 
   .chat-messages {
     position: fixed;
     bottom: 50px;
-    left: 0;
+    right: 0;
     width: 45vw;
     height: calc(100% - 180px);
     overflow: auto;
