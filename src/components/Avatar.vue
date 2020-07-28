@@ -1,6 +1,5 @@
 <template>
 <div class="container">
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <div class="model-box">
     <model-viewer
@@ -20,12 +19,12 @@
 </template>
 
 <script>
-// import ModelViewer from '@google/model-viewer';
+import ModelViewer from '@google/model-viewer';
 
 export default {
   name: 'avatar',
   components: {
-    // ModelViewer,
+    ModelViewer,
   },
   props: {
   },
