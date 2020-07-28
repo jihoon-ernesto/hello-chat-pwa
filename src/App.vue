@@ -97,10 +97,15 @@ export default {
         content: msg,
       });
 
-      const respList = await chatChannel.sendMessage(msg);
-      if (respList) {
-        this.handleResponse(respList);
-        this.chatScroll = true;
+      if (msg[0] === '.') {
+        // animation directive (ex: .Wave, .Jump, .Punch)
+        this.$refs.avatar.setAnimation(msg.substring(1));
+      } else {
+        const respList = await chatChannel.sendMessage(msg);
+        if (respList) {
+          this.handleResponse(respList);
+          this.chatScroll = true;
+        }
       }
     },
     handleResponse(respList) {
