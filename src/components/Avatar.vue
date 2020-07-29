@@ -9,8 +9,11 @@
       ios-src=""
       alt="3D model"
       interaction-prompt="false"
-      camera-controls autoplay shadow-intensity="1"
+      camera-controls
+      shadow-intensity="1"
       :animation-name="animation"
+      @load="onLoad"
+      @pause="onPause"
       >
     </model-viewer>
   </div>
@@ -37,19 +40,33 @@ export default {
   computed: {
   },
   methods: {
-    setAnimation(animName) {
+    playAnimation(animName) {
       this.$nextTick(() => {
         this.animation = animName;
+        this.$refs.model.play();
+
         setTimeout(() => {
-          this.animation = 'Idle';
+          this.$refs.model.pause();
         }, 2000);
       })
     },
+    idle() {
+      this.animation = 'Idle';
+      this.$refs.model.play();
+    },
     wave() {
-      this.setAnimation('Wave');
+      this.playAnimation('Wave');
     },
     run() {
-      this.setAnimation('Running');
+      this.playAnimation('Running');
+    },
+    onLoad() {
+      console.log('onLoad');
+      this.idle();
+    },
+    onPause() {
+      console.log('onPause');
+      this.idle();
     },
   },
 }

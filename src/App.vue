@@ -99,7 +99,7 @@ export default {
 
       if (msg[0] === '.') {
         // animation directive (ex: .Wave, .Jump, .Punch)
-        this.$refs.avatar.setAnimation(msg.substring(1));
+        this.$refs.avatar.playAnimation(msg.substring(1));
       } else {
         const respList = await chatChannel.sendMessage(msg);
         if (respList) {
